@@ -16,10 +16,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name= "libro")
+@Table(name = "libro")
 public class Libro {
+
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_libro")
 	private int idLibro;
 	@Column(name="titulo")
@@ -27,17 +28,17 @@ public class Libro {
 	@Column(name="editorial")
 	private String editorial;
 	@Column(name="num_paginas")
-	private int paginas;
+	private int numPaginas;
 	@Column(name="edicion")
-	private String edition;
+	private String edicion;
 	@Column(name="idioma")
 	private String idioma;
 	@Column(name="fecha_publicacion")
-	private Date FechaPublicacion;
+	private Date fechaPublicacion;
 	@Column(name="descripcion")
 	private String descripcion;
 	@Column(name="tipo_pasta")
-	private String TipoPasta;
+	private String tipoPasta;
 	@Column(name="ISBN")
 	private String ISBN;
 	@Column(name="num_ejemplares")
@@ -46,41 +47,40 @@ public class Libro {
 	private String portada;
 	@Column(name="presentacion")
 	private String presentacion;
-	@Column(name="precio")	
+	@Column(name="precio")
 	private Double precio;
 	
-	
 	@JoinColumn(name ="id_categoria")
-	@ManyToOne(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})//persisten y detach viene asocado con una insercion de dats
+	@ManyToOne(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private Categoria categoria;
 	
 	@JoinColumn(name ="id_autor")
-	@ManyToOne(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})//persisten y detach viene asocado con una insercion de dats
-	private Autor autor;
+	@ManyToOne(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	private Autor autor; 
 	
 	public Libro () {}
 
-	public Libro(int idLibro, String titulo, String editorial, int paginas, String edition, String idioma,
-			Date fechaPublicacion, String descripcion, String tipoPasta, String ISBN, int numEjemplares, String portada,
-			String presentacion, Double precio) {
+	public Libro(int idLibro, String titulo, String editorial, int num_paginas, String edicion, String idioma,
+			Date fecha_Publicacion, String descripcion, String tipo_pasta, String iSBN, int num_ejemplares,
+			String portada, String presentacion, Double precio) {
+	
 		this.idLibro = idLibro;
 		this.titulo = titulo;
 		this.editorial = editorial;
-		this.paginas = paginas;
-		this.edition = edition;
+		this.numPaginas = num_paginas;
+		this.edicion = edicion;
 		this.idioma = idioma;
-		this.FechaPublicacion = fechaPublicacion;
+		this.fechaPublicacion = fecha_Publicacion;
 		this.descripcion = descripcion;
-		this.TipoPasta = tipoPasta;
-		this.ISBN = ISBN;
-		this.numEjemplares = numEjemplares;
+		this.tipoPasta = tipo_pasta;
+		this.ISBN = iSBN;
+		this.numEjemplares = num_ejemplares;
 		this.portada = portada;
 		this.presentacion = presentacion;
 		this.precio = precio;
-		
+		//this.categoria = categoria;
+		//this.autor = autor;
 	}
-	
-	
 
 	public int getIdLibro() {
 		return idLibro;
@@ -106,20 +106,20 @@ public class Libro {
 		this.editorial = editorial;
 	}
 
-	public int getPaginas() {
-		return paginas;
+	public int getNumPaginas() {
+		return numPaginas;
 	}
 
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
+	public void setNumPaginas(int numPaginas) {
+		this.numPaginas = numPaginas;
 	}
 
-	public String getEdition() {
-		return edition;
+	public String getEdicion() {
+		return edicion;
 	}
 
-	public void setEdition(String edition) {
-		this.edition = edition;
+	public void setEdicion(String edicion) {
+		this.edicion = edicion;
 	}
 
 	public String getIdioma() {
@@ -131,11 +131,11 @@ public class Libro {
 	}
 
 	public Date getFechaPublicacion() {
-		return FechaPublicacion;
+		return fechaPublicacion;
 	}
 
 	public void setFechaPublicacion(Date fechaPublicacion) {
-		FechaPublicacion = fechaPublicacion;
+		this.fechaPublicacion = fechaPublicacion;
 	}
 
 	public String getDescripcion() {
@@ -147,11 +147,11 @@ public class Libro {
 	}
 
 	public String getTipoPasta() {
-		return TipoPasta;
+		return tipoPasta;
 	}
 
 	public void setTipoPasta(String tipoPasta) {
-		TipoPasta = tipoPasta;
+		this.tipoPasta = tipoPasta;
 	}
 
 	public String getISBN() {
@@ -159,7 +159,7 @@ public class Libro {
 	}
 
 	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+		this.ISBN = iSBN;
 	}
 
 	public int getNumEjemplares() {
@@ -212,13 +212,13 @@ public class Libro {
 
 	@Override
 	public String toString() {
-		return "Libro [idLibro=" + idLibro + ", titulo=" + titulo + ", editorial=" + editorial + ", paginas=" + paginas
-				+ ", edition=" + edition + ", idioma=" + idioma + ", FechaPublicacion=" + FechaPublicacion
-				+ ", descripcion=" + descripcion + ", TipoPasta=" + TipoPasta + ", ISBN=" + ISBN + ", numEjemplares="
+		return "Libro [idLibro=" + idLibro + ", titulo=" + titulo + ", editorial=" + editorial + ", numPaginas="
+				+ numPaginas + ", edicion=" + edicion + ", idioma=" + idioma + ", fechaPublicacion=" + fechaPublicacion
+				+ ", descripcion=" + descripcion + ", tipoPasta=" + tipoPasta + ", ISBN=" + ISBN + ", numEjemplares="
 				+ numEjemplares + ", portada=" + portada + ", presentacion=" + presentacion + ", precio=" + precio
 				+ ", categoria=" + categoria + ", autor=" + autor + "]";
 	}
-	
+
 	
 	
 	

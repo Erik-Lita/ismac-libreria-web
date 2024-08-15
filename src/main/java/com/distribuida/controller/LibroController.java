@@ -43,7 +43,7 @@ public class LibroController {
 	}
 	
 	
-	@GetMapping("/findOne")  // actualizar o eliminar
+	@GetMapping("/findOne")  
 	public String findOne(@RequestParam("idLibro") @Nullable Integer idLibro
 			, @RequestParam("opcion") @Nullable Integer opcion
 			, ModelMap modelMap
