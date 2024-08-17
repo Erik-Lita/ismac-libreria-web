@@ -1,12 +1,13 @@
 package com.distribuida.entities;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -15,39 +16,44 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "cliente")
 public class Cliente {
-
-	// atributos
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_cliente")
-	private int idCliente;
-	@Column(name="cedula")
-	private String cedula;
-	@Column(name="nombre")
-	private String nombre;
-	@Column(name="apellido")
-	private String apellido;
-	@Column(name="direccion")
-	private String direccion;
-	@Column(name="telefono")
-	private String telefono;
-	@Column(name="correo")
-	private String correo;
-
-	//constructores
-
-	public Cliente () {}
+	//# id_cliente, cedula, nombre, apellido, direccion, telefono, correo
+	//Estoy empezando a trabajar con el git y git hub
 	
-	public Cliente(int idCliente, String cedula, String nombre, String apellido, String direccion,
-			String telefono, String correo) {
+	//Atributos
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	private int idCliente;
+	@Column(name = "cedula")
+	private String cedula;
+	@Column(name = "nombre")
+	private String nombre;
+	@Column(name = "apellido")
+	private String apellido;
+	@Column(name = "direccion")
+	private String direccion;
+	@Column(name = "telefono")
+	private String telefono;
+	@Column(name = "correo")
+	private String correo;
+	
+	
+	
+	//Constructores
+	public Cliente() { }
+
+	public Cliente(int idCliente, String cedula, String nombre, String apellido, String direccion, String telefono,
+			String correo) {
 		this.idCliente = idCliente;
 		this.cedula = cedula;
 		this.nombre = nombre;
-		this.apellido = apellido;		
+		this.apellido = apellido;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
 	}
+	
+	//Metodos getters and setters
 
 	public int getIdCliente() {
 		return idCliente;
@@ -80,7 +86,7 @@ public class Cliente {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
+
 	public String getDireccion() {
 		return direccion;
 	}
@@ -97,8 +103,6 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	
-
 	public String getCorreo() {
 		return correo;
 	}
@@ -111,7 +115,9 @@ public class Cliente {
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido="
 				+ apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + "]";
+	
 	}
+	
 	
 	
 	
